@@ -13,12 +13,11 @@
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
 
         <service
             android:name=".WatchService"
@@ -26,6 +25,14 @@
             android:exported="true" >
         </service>
 
+        <activity android:name=".LogActivity"
+            android:parentActivityName=".MainActivity"
+            >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.keyran.netwatcher.MainActivity"
+                />
+
+        </activity>
     </application>
 
 </manifest>

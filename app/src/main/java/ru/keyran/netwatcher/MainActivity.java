@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openLog(View v){
+        Intent intent = new Intent(this, LogActivity.class);
+        startActivity(intent);
+    }
+
     private void changeConnectionStatus() {
         NetworkInfo net = this.manager.getActiveNetworkInfo();
         TextView connstat = (TextView) findViewById(R.id.connectionStatusText);

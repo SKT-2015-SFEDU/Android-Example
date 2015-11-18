@@ -6,4 +6,5 @@
     <string name="logTag">NetWatcher</string>
     <string name="no_connection">No connection</string>
     <string name="network_info">networkInfo</string>
+    <string name="DB_ITEM_ADDED">ru.keyran.netwatcher.DB_ITEM_ADDED</string>
 </resources>
