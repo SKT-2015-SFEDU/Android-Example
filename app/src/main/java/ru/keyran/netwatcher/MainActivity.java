@@ -1,6 +1,7 @@
 package ru.keyran.netwatcher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,21 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.manager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        watchService = new WatchService();
+        startService(new Intent(this, watchService.getClass()));
         changeConnectionStatus();
-        receiver = new NetworkStatusReceiver();
-        receiverFilter = new IntentFilter();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        registerReceiver(receiver, receiverFilter);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(receiver);
     }
 
     private void changeConnectionStatus() {
@@ -42,6 +32,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ConnectivityManager manager;
-    private NetworkStatusReceiver receiver;
-    private IntentFilter receiverFilter;
+    private WatchService watchService;
 }
