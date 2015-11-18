@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.manager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        changeConnectionStatus();
+    }
+
+    private void changeConnectionStatus() {
         NetworkInfo net = this.manager.getActiveNetworkInfo();
         TextView connstat = (TextView) findViewById(R.id.connectionStatusText);
         if (net == null){
@@ -21,5 +25,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else connstat.setText(R.string.connected);
     }
+
     private ConnectivityManager manager;
 }
