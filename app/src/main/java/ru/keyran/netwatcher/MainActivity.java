@@ -1,5 +1,6 @@
 package ru.keyran.netwatcher;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,7 +19,25 @@ public class MainActivity extends AppCompatActivity {
         this.manager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         watchService = new WatchService();
         startService(new Intent(this, watchService.getClass()));
+        receiver = new FromNetworkStatusReceiver();
+        filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         changeConnectionStatus();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeConnectionStatus();
+        registerReceiver(receiver,filter);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
 
     }
 
@@ -33,4 +52,19 @@ public class MainActivity extends AppCompatActivity {
 
     private ConnectivityManager manager;
     private WatchService watchService;
+    private FromNetworkStatusReceiver receiver;
+    private IntentFilter filter;
+
+
+    public class FromNetworkStatusReceiver extends BroadcastReceiver {
+        public FromNetworkStatusReceiver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            MainActivity.this.changeConnectionStatus();
+        }
+    }
+
 }
+

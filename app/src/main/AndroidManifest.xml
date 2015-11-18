@@ -18,20 +18,14 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".NetworkStatusReceiver"
-            android:enabled="true"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
+
 
         <service
             android:name=".WatchService"
             android:enabled="true"
             android:exported="true" >
         </service>
+
     </application>
 
 </manifest>
