@@ -2,4 +2,6 @@
     <string name="app_name">NetWatcher</string>
     <string name="connected">Подключено</string>
     <string name="disconnected">Отключено</string>
+    <string name="logchanged">Network status changed</string>
+    <string name="logTag">NetWatcher</string>
 </resources>
