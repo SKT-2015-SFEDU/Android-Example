@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NetWatcher</string>
+    <string name="connected">Подключено</string>
+    <string name="disconnected">Отключено</string>
 </resources>
